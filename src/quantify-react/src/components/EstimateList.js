@@ -1,17 +1,22 @@
-import { Listbox, ListboxItem, ListboxSection } from '@heroui/react';
-import React from 'react'
-import {ReactComponent as PhFile} from '../assets/phosphor-icons/PhFile.svg';
+import { Listbox, ListboxItem, ListboxSection, Button } from '@heroui/react';
+import React, { useEffect } from 'react'
 import { useWorkspace } from '../contexts/WorkspaceContext';
+import EstimateListItem from './EstimateListItem.js';
 
 function EstimateList() {
+    const { estimatesList } = useWorkspace();
+
     return (
-        <Listbox selectionMode='single'>
-            <ListboxSection title='Estimates'>
-                <ListboxItem startContent={<PhFile width='24px' height='24px'/>}>Estimate 1</ListboxItem>
-                <ListboxItem>Estimate 2</ListboxItem>
-                <ListboxItem>Estimate 3</ListboxItem>
-            </ListboxSection>
-        </Listbox>
+        <div className='estimate-list-wrapper'>
+            <Listbox selectionMode='single'>
+                <ListboxSection title='Estimates'>
+                    {estimatesList.map((estimate) => (
+                        <EstimateListItem key={estimate.id} estimate={estimate}/>
+                    ))}
+                </ListboxSection>
+            </Listbox>
+            <Button>Add</Button>
+        </div>
     )
 }
 
