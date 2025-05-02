@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { Estimate } from '../models/Estimate.js';
+import { Estimate } from '../models/Estimate.ts';
 
 const WorkspaceContext = createContext();
 
@@ -8,7 +8,8 @@ export function WorkspaceProvider({children}) {
     const [estimatesList, setEstimatesList] = useState([
         {
             "id": "q9238rufohgj",
-            "name": "test estimate 1"
+            "name": "test estimate 1",
+            "status": "error"
         }
     ]);
     const [estimatesOpenList, setEstimatesOpenList] = useState([]);
@@ -34,6 +35,11 @@ export function WorkspaceProvider({children}) {
             setActiveEstimate(estimatesOpenList.at(-1) || null);
         }
     };
+    const enterEstimateStatus = (id, status) => {
+        setEstimatesList(prev =>
+            prev.map(e => e.id === id ? e.withStatus(status) : e)
+        );
+    }
 
     const value = {
         estimatesList,
@@ -45,6 +51,7 @@ export function WorkspaceProvider({children}) {
         addEstimate,
         openEstimate,
         closeEstimate,
+        enterEstimateStatus,
     }
 
     return (

@@ -9,9 +9,9 @@ module.exports = {
     heroui({
       layout: {
         radius: {
-          small: '2px',
-          medium: '6px',
-          large: '10px'
+          small: '4px',
+          medium: '4px',
+          large: '8px'
         },
       }
     })
