@@ -8,10 +8,12 @@ function Workspace(props) {
 
     return (
         <WorkspaceProvider>
-            <NavComponent/>
-            <div className='workspace-wrapper'>
-                <EstimateList/>
-                
+            <div className='flex flex-col h-screen'>
+                <NavComponent/>
+                <div className='flex-1 workspace-wrapper'>
+                    <EstimateList/>
+                    
+                </div>
             </div>
         </WorkspaceProvider>
     )

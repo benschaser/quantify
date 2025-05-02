@@ -4,7 +4,7 @@ import { useWorkspace } from '../contexts/WorkspaceContext';
 import {ReactComponent as PhFile} from '../assets/phosphor-icons/PhFile.svg';
 import {ReactComponent as PhPlusCircle} from '../assets/phosphor-icons/PhPlusCircle.svg';
 import {ReactComponent as PhWarningCircle} from '../assets/phosphor-icons/PhWarningCircle.svg';
-import {ReactComponent as PhCircleFill} from '../assets/phosphor-icons/PhCircleFill.svg';
+import {ReactComponent as PhCheckCircle} from '../assets/phosphor-icons/PhCheckCircle.svg';
 
 
 
@@ -15,17 +15,17 @@ function EstimateList() {
     console.log(estimatesList);
 
     const statusIconMap = {
-        saved: <PhCircleFill width='16px' height='16px' color='#17c964'/>,
+        saved: <PhCheckCircle width='20px' height='20px' color='#17c964'/>,
         loading: <Spinner size='sm' classNames={{label: "text-foreground mt-4"}} variant="gradient"/>,
-        error: <PhWarningCircle width='16px' height='16px' color='#f31260'/>
+        error: <PhWarningCircle width='20px' height='20px' color='#f31260'/>
     }
 
     return (
-        <div className='estimate-list-wrapper'>
-            <Listbox selectionMode='single' bottomContent={
-                <Button onPress={addEstimate} color='primary' startContent={<PhPlusCircle width='24px' height='24px'/>}>New Estimate</Button>
+        <div className='estimate-list-wrapper border-r border-divider'>
+            <Listbox selectionMode='none' bottomContent={
+                <Button onPress={addEstimate} color='primary' startContent={<PhPlusCircle width='20px' height='20px'/>}>New Estimate</Button>
             }>
-                <ListboxSection title='Estimates'>
+                <ListboxSection title='Recent Estimates'>
                     {estimatesList.map((estimate) => (
                         <ListboxItem key={estimate.id} 
                             startContent={<PhFile width='20px' height='20px'/>}
