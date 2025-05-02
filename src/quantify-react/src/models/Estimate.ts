@@ -2,9 +2,9 @@ import { v4 as uuidv4 } from "uuid";
 
 export class Estimate {
     constructor(
-        public id: string = uuidv4(),
+        public readonly id: string = uuidv4(),
         public name: string = "New Estimate",
-        public status: "saved" | "loading" | "error" = "loading",
+        public status: "saved" | "loading" | "error" = "saved",
         public data: [],
     ) {}
 

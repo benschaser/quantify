@@ -4,14 +4,8 @@ import { Estimate } from '../models/Estimate.ts';
 const WorkspaceContext = createContext();
 
 export function WorkspaceProvider({children}) {
-    // Context Data
-    const [estimatesList, setEstimatesList] = useState([
-        {
-            "id": "q9238rufohgj",
-            "name": "test estimate 1",
-            "status": "error"
-        }
-    ]);
+    // Estimate Data
+    const [estimatesList, setEstimatesList] = useState([]);
     const [estimatesOpenList, setEstimatesOpenList] = useState([]);
     const [activeEstimate, setActiveEstimate] = useState(null);
 
@@ -21,13 +15,15 @@ export function WorkspaceProvider({children}) {
         setEstimatesList((prev) => [...prev, newEstimate]);
         openEstimate(newEstimate);
     };
-    const openEstimate = (estimate) => {
+    const openEstimate = (id) => {
+        const estimate = estimatesList.find(est => est.id === id);
         setEstimatesOpenList((prev) => {
-            const alreadyOpen = prev.some((e) => e.id === estimate.id);
-            if (alreadyOpen) return prev;
+            const alreadyOpen = prev.some((e) => e.id === id);
+            if (alreadyOpen || !estimate) return prev;
             return [...prev, estimate];
         });
-        setActiveEstimate(estimate);
+        if (!estimate) return;
+        setActiveEstimate(id);
     };
     const closeEstimate = (estimate) => {
         setEstimatesOpenList((prev) => prev.filter((e) => e.id !== estimate.id));
