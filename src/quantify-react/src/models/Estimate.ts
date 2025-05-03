@@ -15,7 +15,7 @@ export class Estimate {
 
 export class EstimateDataGroup {
     constructor(
-        public code: string = "00 00 00 00",
+        public division: string = "00 00 00 00",
         public name: string = "",
         public items: [],
     ) {}

@@ -25,11 +25,26 @@ export function WorkspaceProvider({children}) {
         if (!estimate) return;
         setActiveEstimate(id);
     };
-    const closeEstimate = (estimate) => {
-        setEstimatesOpenList((prev) => prev.filter((e) => e.id !== estimate.id));
-        if (activeEstimate.id === estimate.id) {
-            setActiveEstimate(estimatesOpenList.at(-1) || null);
-        }
+    const closeEstimate = (id) => {
+        var index;
+        console.log('\nclosing: '+id+'\nactive: ' + activeEstimate);
+        // setEstimatesOpenList((prev) => {
+        //     index = prev.findIndex(item => item.id === id);
+        //     if (index === -1) return prev;
+
+        //     const newItems = [...prev];
+        //     newItems.splice(index, 1);
+        //     return newItems;
+        // });
+        // if (activeEstimate === id) {
+        //     const newActiveIndex = estimatesOpenList[index - 1] ?? estimatesOpenList[index] ?? null;
+        //     setActiveEstimate(estimatesOpenList.at(newActiveIndex) || null);
+        //     console.log('was active');
+        // }
+        // else {console.log('was not active')}
+
+        // console.log('fnt end: '+activeEstimate);
+        
     };
     const enterEstimateStatus = (id, status) => {
         setEstimatesList(prev =>
