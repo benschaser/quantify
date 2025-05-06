@@ -6,13 +6,11 @@ import EstimateFileView from '../views/EstimateFileView';
 import { WorkspaceProvider } from '../contexts/WorkspaceContext';
 
 function Workspace() {
-    const [estimatesListPanelOpen, setEstimatesListPanelOpen] = useState(true);
-
     return (
         <WorkspaceProvider>
             <div className='flex flex-col h-screen'>
                 <NavComponent/>
-                <div className='h-screen grid grid-cols-[auto_auto_1fr]'>
+                <div className='h-screen grid grid-cols-[auto_auto_1fr] overflow-hidden'>
                     <EstimateList/>
                     <Divider orientation='vertical'/>
                     <EstimateFileView/>

@@ -25,7 +25,7 @@ function EstimateEditor({estimate}) {
             <div className='flex flex-col items-fill w-full'>
                 <Accordion isCompact className='px-0' selectionMode='multiple' defaultExpandedKeys={estimate.data.map(obj => obj.id)}>
                     {estimate.data.map((division) => (
-                        <AccordionItem key={division.id} aria-label={division.name} classNames={{heading: "group bg-default-100 px-2"}} title={
+                        <AccordionItem key={division.id} aria-label={division.name} classNames={{heading: "group bg-default-100 px-2", content: "p-0"}} title={
                             // <div className='flex items-center space-x-2'>
                             //     <div className='relative overflow-hidden w-[20px] h-[20px]'>
                             //         <div className='grid grid-cols-2 transition-transform duration-200 ease-in-out group-data-[hover=true]:translate-x-[-32px] w-[200%]'>
@@ -40,7 +40,7 @@ function EstimateEditor({estimate}) {
                             //     <span>{division.code} {division.name}</span>
                             // </div>
                             <div className='flex items-center space-x-2'>
-                                <PhEquals width='20px' height='20px'/>
+                                <PhEquals className='cursor-grab' width='20px' height='20px'/>
                                 <span>{division.code} {division.name}</span>
                             </div>
                         }>

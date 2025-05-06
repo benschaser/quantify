@@ -23,7 +23,7 @@ function EstimateFileView() {
             <Tabs onSelectionChange={handleTabSelection} 
                 selectedKey={activeEstimate} 
                 items={estimatesOpenList} 
-                classNames={{tabList: "rounded-none w-full justify-start border-b", tab: "w-auto group", panel: "p-[0px]"}}>
+                classNames={{tabList: "rounded-none w-full justify-start border-b", tab: "w-auto group", panel: "p-[0px] overflow-auto"}}>
                 {(item) => (
                     <Tab 
                         key={item.id} 

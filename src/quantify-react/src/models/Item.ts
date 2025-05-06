@@ -5,11 +5,15 @@ export default class Item {
     public code: string;
     public name: string;
     public description: string;
+    public notes: string;
     public materialQuantity: number;
     public materialUnits: "EA" | "LF" | "SF";
     public materialUnitCost: number;
     public laborQuantity: number;
     public laborUnits: "HRS" | "DAYS";
     public laborUnitCost: number;
+    public isSubcontractor: boolean;
+    public subcontractor: string;
+    public subcontractorCost: number;
 
 }
