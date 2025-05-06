@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
-import { Estimate } from '../models/Estimate.ts';
-
+import Estimate from '../models/Estimate.ts';
+import { revive } from '../models/Division.ts';
+import ESTIMATE_TEMPLATES from '../server/local/EstimateTemplates.json';
 const WorkspaceContext = createContext();
 
 export function WorkspaceProvider({children}) {
@@ -11,7 +12,12 @@ export function WorkspaceProvider({children}) {
 
     // Context Functions
     const addEstimate = () => {
-        const newEstimate = new Estimate()
+        const newEstimate = new Estimate();
+        console.log(ESTIMATE_TEMPLATES);
+        ESTIMATE_TEMPLATES.ESTIMATE_TEMPLATE_01.data.forEach(div => {
+            console.log(revive(div));
+            newEstimate.data.push(revive(div));
+        });
         setEstimatesList((prev) => [...prev, newEstimate]);
         openEstimate(newEstimate);
     };

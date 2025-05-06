@@ -20,7 +20,10 @@ function EstimateFileView() {
 
     return (
         <div className='flex flex-col items-fill w-full'>
-            <Tabs onSelectionChange={handleTabSelection} selectedKey={activeEstimate} items={estimatesOpenList} classNames={{tabList: "rounded-none w-full justify-start border-b", tab: "w-auto", panel: "p-[0px]"}}>
+            <Tabs onSelectionChange={handleTabSelection} 
+                selectedKey={activeEstimate} 
+                items={estimatesOpenList} 
+                classNames={{tabList: "rounded-none w-full justify-start border-b", tab: "w-auto group", panel: "p-[0px]"}}>
                 {(item) => (
                     <Tab 
                         key={item.id} 
@@ -28,12 +31,10 @@ function EstimateFileView() {
                             <div className='flex flex-row items-center space-x-1'>
                                 <span>{item.name}</span>
                                 <span
-                                    onPointerDown={(e) => {
-                                        e.stopPropagation();
-                                        e.preventDefault();
+                                    onMouseDown={(e) => {
                                         handleCloseTab(item.id)}
                                     } 
-                                    className='flex items-center justify-center h-[24px] w-[24px] !-mr-[8px] rounded-sm transition-colors duration-200 ease-in-out hover:bg-red-100 hover:text-danger'>
+                                    className='flex items-center justify-center h-[24px] w-[24px] !-mr-[8px] rounded-sm transition-colors duration-200 ease-in-out group-data-[active=false]:display-none hover:bg-red-100 hover:text-danger'>
                                     <PhX width='16px' height='16px'/>
                                 </span>
                                 

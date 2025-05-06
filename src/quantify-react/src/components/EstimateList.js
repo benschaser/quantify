@@ -57,14 +57,14 @@ function EstimateList() {
                             onDoubleClick={() => handleItemDoubleClick(estimate.id)} 
                             key={estimate.id} 
                             startContent={
-                                <div className='relative overflow-hidden w-[32px] h-[32px]'>
-                                    <div className='grid grid-cols-2 transition-transform duration-200 ease-in-out group-data-[hover=true]:translate-x-[-32px] w-[200%]'>
+                                <div className='relative overflow-hidden w-[20px] h-[20px] mt-[6px] mb-[6px]'>
+                                    <div className='grid grid-cols-2 transition-transform duration-200 ease-in-out group-data-[hover=true]:translate-x-[-20px] w-[200%]'>
                                         <div className='flex items-center justify-center'>
                                             <PhFile width='20px' height='20px'/>
                                         </div>
                                         <Dropdown>
                                             <DropdownTrigger>
-                                                <Button isIconOnly size='sm' variant='light' radius='full'>
+                                                <Button isIconOnly size='sm' variant='light' radius='full' className='p-0 w-auto h-auto min-w-0'>
                                                     <PhDotsThree width='20px' height='20px'/>
                                                 </Button>
                                             </DropdownTrigger>

@@ -1,22 +1,32 @@
 import { v4 as uuidv4 } from "uuid";
 
-export class Estimate {
-    constructor(
-        public readonly id: string = uuidv4(),
-        public name: string = "New Estimate",
-        public status: "saved" | "loading" | "error" = "saved",
-        public data: [],
-    ) {}
+export default class Estimate {
+    public readonly id: string = uuidv4();
+    public classificationId: string;
+    public name: string;
+    public status: "saved" | "loading" | "error" | "none";
+    public data: any[] = [];
 
-    withStatus(status: "saved" | "loading" | "error"): Estimate {
-        return new Estimate(this.id, this.name, status, this.data);
+    constructor(id=uuidv4(), classificationId="", name="New Estimate", status="none") {
+        this.id = id;
+        this.classificationId = classificationId;
+        this.name = name;
+        if (status === "saved" || status === "loading" || status === "error" || status === "none") this.status = status;
+    }
+    /**
+     * Sets the status of the estimate file.
+     */
+    withStatus(status: "saved" | "loading" | "error" | "none"): Estimate {
+        return new Estimate(this.id, this.classificationId, this.name, status);
+    }
+    /**
+     * Sets the data template of the estimate.
+     * @param template - A deep cloned array of divisions.
+     */
+    setTemplate(template: any[]) {
+        this.data = template;
     }
 }
 
-export class EstimateDataGroup {
-    constructor(
-        public division: string = "00 00 00 00",
-        public name: string = "",
-        public items: [],
-    ) {}
-}
+
+
